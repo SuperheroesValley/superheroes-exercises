@@ -13,7 +13,7 @@ class Solution:
             elif stack and c == stack[-1]:
                 stack.pop()
                 if c == 'b':
-                    stack.append('c') # Il prossimo elemento nella sequenza che ci aspettiamo e' una 'b'
+                    stack.append('c') # Il prossimo elemento nella sequenza che ci aspettiamo e' una 'c'
             else:
                 return False # c'e' un mismatch, la sequenza non va bene
         
