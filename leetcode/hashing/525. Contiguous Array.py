@@ -31,3 +31,41 @@ class Solution:
                 l += diff//2
                 r += diff//2
         return 0
+
+
+
+# Time complexity: O(n)
+# The idea is the following:
+# By precalculating the number of ones up to index j (j excluded) we know in costant
+# time the number of ones of any subarray.
+# Let's consider a subarray [i, j]
+# The number of ones is: seqOnes = pre[j+1] - pre[i]
+# The number of zeroes is: seqZeroes = j+1 - i - seqOnes = j + 1 - i - pre[j+1] - pre[i]
+#
+# We want all seqOnes == seqZeroes so
+# pre[j+1] - pre[i] == j + 1 - i - pre[j+1] - pre[i]
+# 2*pre[j+1] - (j+1) == 2*pre[i] - i
+#
+# This is a nice equation where the parameters i and j are divded.
+# We can use the left part of the equation as a key in a hash map and iterate over
+# the i and check if we have a match.
+class Solution:
+    def findMaxLength(self, nums: List[int]) -> int:
+        # Hash map, the key is 2*pre[j] - j, the value is j
+        m = {}
+        # Pre-compute the number of ones so that I can avoid calling nums.count(1) for the current subarray
+        pre = [0]
+        m[0] = 0 # 2*0 - 0 -> 0
+        total = 0
+        for i,n in enumerate(nums):
+            if n == 1:
+                total += 1
+            pre.append(total)
+            m[2*total-(i+1)] = i+1
+        
+        sol = 0
+        for i in range(len(nums)+1):
+            v = 2*pre[i] - i # Calculate right part of the equation
+            if v in m: # if we have a match then check if we have a better solution
+                sol = max(sol, abs(i-m[v]))
+        return sol
