@@ -35,3 +35,28 @@ class Solution(object):
         dp_grid[row][column] = min(cost_1, cost_2) + grid[row][column]
         
         return dp_grid[row][column]
+   
+# ---------------------------------------------------------------------
+# Bottom - up solution
+# ---------------------------------------------------------------------
+    
+class Solution(object):
+    def minPathSum(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        i, j = 0, 0
+        
+        for i in range(1, len(grid)):
+            grid[i][j] = grid[i-1][j] + grid[i][j]
+            
+        i = 0
+        for j in range(1, len(grid[0])):
+            grid[i][j] = grid[i][j-1] + grid[i][j]
+        
+        for i in range(1, len(grid)):
+            for j in range(1, len(grid[0])):
+                grid[i][j] = min(grid[i-1][j], grid[i][j-1]) + grid[i][j]
+                
+        return grid[-1][-1]
