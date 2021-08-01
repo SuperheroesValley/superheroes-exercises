@@ -26,3 +26,31 @@ class Solution(object):
                 len_intersection += 1
         to_be_removed += len_intersection - 1
         return to_be_removed
+
+    
+'''
+Soluzione 2
+'''
+
+class Solution(object):
+    def eraseOverlapIntervals(self, intervals):
+        intervals = sorted(intervals, key=lambda x: x[0])
+        ans = 0
+				
+        i = 1
+        while i < len(intervals):
+            if intervals[i-1][1] > intervals[i][0]:
+                ans += 1
+
+                res = max(intervals[i-1][1], intervals[i][1])
+
+                idx = i
+                if intervals[i-1][1] == res:
+                    idx = i-1
+
+                del intervals[idx]
+            else:
+            	i += 1
+            
+
+        return ans
