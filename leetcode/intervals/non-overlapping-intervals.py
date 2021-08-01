@@ -42,12 +42,8 @@ class Solution(object):
             if intervals[i-1][1] > intervals[i][0]:
                 ans += 1
 
-                res = max(intervals[i-1][1], intervals[i][1])
-
-                idx = i
-                if intervals[i-1][1] == res:
-                    idx = i-1
-
+                #Remove elem with bigger end
+                idx = i-1 if intervals[i-1][1] == max(intervals[i-1][1], intervals[i][1]) else i  
                 del intervals[idx]
             else:
             	i += 1
