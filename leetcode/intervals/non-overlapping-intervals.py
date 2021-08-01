@@ -24,5 +24,5 @@ class Solution(object):
             else:
                 intersection = [max(intersection[0], interval_start), min(intersection[1], interval_end)]
                 len_intersection += 1
-        to_be_removed += len_intersection - 
+        to_be_removed += len_intersection - 1
         return to_be_removed
