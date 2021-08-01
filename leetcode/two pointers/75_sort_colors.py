@@ -1,3 +1,23 @@
+'''
+Soluzione 1: Insertion Sort
+'''
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        i, j = 0, 0
+        n = len(nums)
+        
+        for color in range(0,3):
+            for i in range(j, n):
+                if nums[i] == color:
+                    nums[i], nums[j] = nums[j], nums[i]
+                    j += 1
+
+'''
+Soluzione 2: counting sort
+'''
 class Solution(object):
     def sortColors(self, nums):
         """
