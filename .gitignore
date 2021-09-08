@@ -1,0 +1,7 @@
+# OS files
+.DS_Store
+._*
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
