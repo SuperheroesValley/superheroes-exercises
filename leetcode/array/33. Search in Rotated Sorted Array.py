@@ -47,3 +47,9 @@ class Solution:
             return bin_search(target, k, n-1)
         else:
             return bin_search(target, 0, k-1)
+        
+        #NOTE: checking on nums[0] <= target <= nums[k]
+        #is wrong, because nums[k] is the SMALLEST number 
+        #(thus it is always smaller than nums[0])
+        #A better condition could be nums[0] <= target <= nums[k-1]
+        #but then you have to check if k-1 exits
