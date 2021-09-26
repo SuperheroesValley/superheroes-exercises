@@ -1,3 +1,4 @@
+#Leetcode: https://leetcode.com/problems/reorder-list/
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -47,3 +48,66 @@ class Solution:
             lst = tmp_lst
             node = tmp_node 
         lst.next = None
+
+
+# Another Solution
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """      
+        def reverse(head):
+            if head is None or head.next is None:
+                return head
+            curr = head.next
+            head.next = None
+            while curr != None:
+                tmp = curr.next
+                curr.next = head
+                head = curr
+                curr = tmp
+            
+            return head
+        
+        #Find list half point
+        curr = head
+        n = 0
+        while curr != None:
+            curr = curr.next
+            n = n + 1
+        
+        m = n // 2
+        
+        midpoint = head
+        cnt = 0
+        while cnt < m:
+            midpoint = midpoint.next
+            cnt = cnt + 1
+        
+        #Divide in two sub-lists
+        r_head = midpoint.next
+        midpoint.next = None
+        
+        #Reverse second sub-lists
+        r_head = reverse(r_head)
+        
+        #Alternate-insert second sub-list in first sub-list
+        curr = head
+        r_curr = r_head
+        
+        while curr != None and r_curr != None:
+            tmp = curr.next
+            r_tmp = r_curr.next
+            
+            curr.next = r_curr
+            curr.next.next = tmp
+            
+            r_curr = r_tmp
+            curr = tmp
+        
