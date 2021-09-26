@@ -39,7 +39,7 @@ class Solution:
             
         n = len(nums)
         
-        #binary search the smallest element to find k
+        #(modded) binary search the smallest element to find k
         k = mod_bin_search(0, n-1)
         
         #partition-wise binary search
