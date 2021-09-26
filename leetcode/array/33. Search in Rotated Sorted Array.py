@@ -2,7 +2,7 @@
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        #find smallest element
+        #find index of smallest element
         def mod_bin_search(l,r):
             if l < r:
                 m = (l + r) // 2
