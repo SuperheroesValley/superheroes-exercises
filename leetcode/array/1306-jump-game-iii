@@ -1,0 +1,30 @@
+class Solution:
+    
+    explored_index = set()
+    arr = []
+    
+    def canReach(self, arr: List[int], start: int) -> bool:
+        self.explored_index = set()
+        self.arr = arr
+        return self.canReachRic(start)
+        
+    
+    def canReachRic(self, start: int) -> bool:
+        
+        if self.arr[start] == 0:
+            return True
+        
+        if start in self.explored_index:
+            return False
+        
+        self.explored_index.add(start)
+        
+        if self.arr[start] + start < len(self.arr):
+            if self.canReachRic(self.arr[start] + start) == True:
+                return True
+            
+        if start - self.arr[start] >= 0:
+            if self.canReachRic(start - self.arr[start]) == True:
+                return True
+        
+        return False
