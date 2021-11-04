@@ -1,6 +1,8 @@
 """
 1891. Cutting Ribbons
 
+https://leetcode.com/problems/cutting-ribbons/
+https://www.lintcode.com/problem/183/ (should be the same exercise)
 
 """
 
