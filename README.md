@@ -4,8 +4,8 @@ A collection of solutions for some interviews problems on interviewbit and leetc
 
 The problems are divide in three main folders.
 
-- LeetCode problems
-- Interviewbit problems
+- [LeetCode problems](https://leetcode.com/problemset/all/)
+- [Interviewbit problems](https://www.interviewbit.com/courses/programming/) 
 - Problems asked during online assessment
 
 We meet on Discord twice a week to do exercises and to prepare for interview. 
